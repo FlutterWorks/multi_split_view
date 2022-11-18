@@ -1,4 +1,4 @@
-[![](https://img.shields.io/pub/v/multi_split_view.svg)](https://pub.dev/packages/multi_split_view) ![](https://github.com/caduandrade/multi_split_view/actions/workflows/test.yml/badge.svg) [![](https://img.shields.io/badge/demo-try%20it%20out-blue)](https://caduandrade.github.io/multi_split_view_demo/) [![](https://img.shields.io/badge/Flutter-%E2%9D%A4-red)](https://flutter.dev/) [![](https://img.shields.io/badge/donate-crypto-green)](#support-this-project)
+[![](https://img.shields.io/pub/v/multi_split_view.svg)](https://pub.dev/packages/multi_split_view) ![](https://github.com/caduandrade/multi_split_view/actions/workflows/test.yml/badge.svg) [![](https://img.shields.io/badge/demo-try%20it%20out-blue)](https://caduandrade.github.io/multi_split_view_demo/) [![](https://img.shields.io/badge/Flutter-%E2%9D%A4-red)](https://flutter.dev/) [![](https://img.shields.io/badge/donate-crypto-green)](#support-this-project) ![](https://img.shields.io/badge/%F0%9F%91%8D%20and%20%E2%AD%90-are%20free-yellow)
 
 # Multi split view
 
@@ -19,7 +19,8 @@ A widget to provides horizontal or vertical multiple split view for Flutter.
 * [Vertical](#vertical)
 * [Horizontal and vertical](#horizontal-and-vertical)
 * Size
-  * [Setting the weight](#setting-the-weight)
+  * [Setting the initial weights](#setting-the-initial-weights)
+  * [Changing the weights or sizes programmatically](#changing-the-weights-or-sizes-programmatically)
   * [Minimal child weight](#minimal-child-weight)
   * [Minimal child size in pixels](#minimal-child-size-in-pixels)
   * [Resizable](#resizable)
@@ -66,22 +67,31 @@ A widget to provides horizontal or vertical multiple split view for Flutter.
 
 ![](https://caduandrade.github.io/multi_split_view/horizontal_vertical_v1.png)
 
-## Setting the weight
+## Setting the initial weights
 
 #### Using in a StatelessWidget
 
 ```dart
     // setting 10% of weight for the first child
     MultiSplitView multiSplitView = MultiSplitView(
-        children: [child1, child2, child3], initialWeights: [0.1]);
+        children: [child1, child2, child3], initialAreas: [Area(weight: 0.1)]);
 ```
 
 #### Using in a StatefulWidget
 
 ```dart
   MultiSplitViewController _controller =
-      MultiSplitViewController(weights: [0.1]);
+      MultiSplitViewController(areas: [Area(weight: 0.1)]);
 ```
+
+or
+
+```dart
+  MultiSplitViewController _controller2 =
+      MultiSplitViewController(areas: Area.weights([0.1]));
+```
+
+and
 
 ```dart
     // setting 10% of weight for the first child
@@ -91,27 +101,24 @@ A widget to provides horizontal or vertical multiple split view for Flutter.
 
 ![](https://caduandrade.github.io/multi_split_view/horizontal_weight_v1.png)
 
+## Changing the weights or sizes programmatically
+
+```dart
+    _controller.areas = [Area(size: 150)];
+```
+
 ## Minimal child weight
 
 ```dart
-    MultiSplitView(axis: Axis.vertical, children: [
-      MultiSplitView(children: [child1, child2], minimalWeight: .40),
-      MultiSplitView(children: [child3, child4])
-    ]);
+  MultiSplitViewController _controller =
+      MultiSplitViewController(areas: [Area(minimalWeight: .25), Area(minimalWeight: .25)]);
 ```
-
-![](https://caduandrade.github.io/multi_split_view/minimal_weight_v1.gif)
 
 ## Minimal child size in pixels
 
-Used if `minimalWeight` has not been set.
-The size will be converted into weight and will respect the limit defined by the `MultiSplitView.defaultMinimalWeight` constant, allowing all children to be visible.
-
 ```dart
-    MultiSplitView(axis: Axis.vertical, children: [
-      MultiSplitView(children: [child1, child2], minimalSize: 100),
-      MultiSplitView(children: [child3, child4])
-    ]);
+  MultiSplitViewController _controller =
+      MultiSplitViewController(areas: [Area(minimalSize: 150)]);
 ```
 
 ## Resizable
@@ -125,8 +132,8 @@ The size will be converted into weight and will respect the limit defined by the
 ```dart
     MultiSplitView(
         children: [child1, child2, child3, child4],
-        onSizeChange: (childIndex1, childIndex2) => print(
-            'Index of children whose size has changed: $childIndex1 and $childIndex2'));
+        onWeightChange: () =>
+            DemoFlu.printOnConsole(context, 'Weight has changed'));
 ```
 
 ## Divider thickness
@@ -338,6 +345,10 @@ class MyDividerPainter extends DividerPainter {
 ### Ethereum (ERC-20) or Binance Smart Chain (BEP-20)
 
 [0x9eB815FD4c88A53322304143A9Aa8733D3369985](https://etherscan.io/address/0x9eb815fd4c88a53322304143a9aa8733d3369985)
+
+### Solana
+
+[7vp45LoQXtLYFXXKx8wQGnzYmhcnKo1TmfqUgMX45Ad8](https://explorer.solana.com/address/7vp45LoQXtLYFXXKx8wQGnzYmhcnKo1TmfqUgMX45Ad8)
 
 ### Helium
 

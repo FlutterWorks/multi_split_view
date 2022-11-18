@@ -1,7 +1,7 @@
 name: multi_split_view
 description: Provides horizontal or vertical multiple split view for Flutter.
-version: 1.11.0+1
-homepage: https://github.com/caduandrade/multi_split_view
+version: 2.1.0
+repository: https://github.com/caduandrade/multi_split_view
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
