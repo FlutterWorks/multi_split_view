@@ -1,5 +1,7 @@
+import 'package:meta/meta.dart';
 import 'package:multi_split_view/src/area.dart';
 
+@internal
 class SizesCache {
   factory SizesCache(
       {required List<Area> areas,
@@ -27,6 +29,7 @@ class SizesCache {
         minimalSizes: minimalSizes,
         dividerThickness: dividerThickness);
   }
+
   SizesCache._(
       {required this.childrenCount,
       required this.fullSize,
@@ -41,4 +44,21 @@ class SizesCache {
   final double childrenSize;
   List<double> sizes;
   List<double> minimalSizes;
+
+  void iterate({required CacheIterator child, required CacheIterator divider}) {
+    double childStart = 0, childEnd = 0, dividerStart = 0, dividerEnd = 0;
+    for (int childIndex = 0; childIndex < childrenCount; childIndex++) {
+      final double childSize = sizes[childIndex];
+      childEnd = fullSize - childSize - childStart;
+      child(childIndex, childStart, childEnd);
+      if (childIndex < childrenCount - 1) {
+        dividerStart = childStart + childSize;
+        dividerEnd = childEnd - dividerThickness;
+        divider(childIndex, dividerStart, dividerEnd);
+        childStart = dividerStart + dividerThickness;
+      }
+    }
+  }
 }
+
+typedef CacheIterator = void Function(int index, double start, double end);

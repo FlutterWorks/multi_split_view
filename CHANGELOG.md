@@ -1,3 +1,21 @@
+## 2.3.2
+
+* `Area`
+  * Replacing the factory constructor with a default constructor.
+
+## 2.3.1
+
+* Bugfix
+  * The anti-aliasing bug workaround is clipping a pixel.
+
+## 2.3.0
+
+* The standard divider widget (`DividerWidget`) has been exported to the public API.
+* Behavior change
+  * Canceling the divider drag after using the `areas` setter in the `MultiSplitViewController`.
+* Bugfix
+  * Divider animation not starting when touching it on mobile.
+
 ## 2.2.0
 
 * Divider
