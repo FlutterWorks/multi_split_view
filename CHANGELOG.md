@@ -1,7 +1,51 @@
-## 2.3.2
+## 3.2.0
+
+* `Area`
+  * Adding `id` to be used as an internal Key and facilitating reconfiguration of the layout while maintaining the state of the widgets. 
+
+## 3.1.0
+
+* `Area`
+  * The `widget` attribute has been removed. Developers may have encountered unintended behavior when using `widget` as it retained the last context, resulting in unexpected fixed states. Going forward, only the `builder` attribute will be available, ensuring dynamic updates based on the current context.
+  * The `builder` function was replaced by `AreaWidgetBuilder`, thus receiving the area as an extra argument. 
+  * New attribute: `index`
+* `AreaWidgetBuilder`
+  * The argument `index` has been removed.
+
+## 3.0.2
+
+Bugfix: Other Widgets visually behind are not receiving mouse events.
+
+## 3.0.1
+
+Bugfix: Stretching to recover the minimum size when space is available.
+
+## 3.0.0
+
+* `Area`
+  * The algorithm has been changed to use `flex` factor instead of `weight`.
+  * The `minimalWeight` and `minimalSize` attributes has been replaced by `min`.
+  * The `hasMinimal` attribute has been removed.
+  * New attribute: `max`.
+* `Theme`
+  * The `dividerThickness` now can be zero.
+* `OnWeightChange` has been replaced by `OnDividerDragUpdate`
+* `MultiSplitViewController`
+  * The `areasLength` attribute has been renamed to `areasCount`
+* `MultiSplitView`
+  * Width and height configuration to be used in an unbounded situation.
+* Setting the widget directly in the area or through builders.
+* Bugfix
+  * Area using the child widget key.
+
+## 2.4.0
 
 * `Area`
   * Replacing the factory constructor with a default constructor.
+  * The `copyWithNewWeight` method has been removed.
+* `MultiSplitViewController`
+  * Keeping the reference to the areas received by the constructor parameter. A new instance of `Area` will no longer be built when resizing the layout. 
+  * The `setAreaAt` method has been removed.
 
 ## 2.3.1
 
