@@ -1,7 +1,41 @@
+## 3.6.0
+
+* `Area`
+  * Allow changing size, flex, min and max values.
+
+## 3.5.0
+
+* Bugfix
+  * The `Area.copyWith` method does not allow nulling values. The API has been changed to support this.
+
+## 3.4.0
+
+* `MultiSplitView`
+  * Added `areaClipBehavior` to control area clipping.
+
+## 3.3.0
+
+* `Area`
+  * Added `copyWith` method.
+* `MultiSplitView`
+  * Added `onDividerDragStart` and `onDividerDragEnd` callbacks.
+* `MultiSplitViewThemeData`
+  * Allows divider without thickness.
+  * Allows increasing the handle area around the divider.
+
+## 3.2.2
+
+* Bugfix: The divider does not move when the widget's size includes a tiny fractional value.
+
+## 3.2.1
+
+* Bugfix: `MultiSplitViewController` throwing error when being built or modified to have no areas.
+
 ## 3.2.0
 
 * `Area`
-  * Adding `id` to be used as an internal Key and facilitating reconfiguration of the layout while maintaining the state of the widgets. 
+  * Adding `id` to be used as an internal Key and facilitating reconfiguration of the layout while maintaining the state of the widgets.
+* Avoiding rebuilding areas when hovering over the divider.
 
 ## 3.1.0
 
